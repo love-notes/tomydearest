@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
+  <title>mensiversary</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --pink-bg:#ffd6e6;
+      --pink-1:#f7b2cc;
+      --pink-2:#f19fc0;
+      --pink-3:#ee8db6;
+      --lilac:#dcd8ee;
+      --white:#ffffff;
+      --shadow:0 18px 50px rgba(0,0,0,.16);
+      --softShadow:0 10px 25px rgba(0,0,0,.10);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--pink-bg);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+             "Quicksand", system-ui, sans-serif;
+      overflow:hidden;
+    }
+
+    /* ======= PHONE MOCK ======= */
+    .phone-wrap{
+      width: min(360px, 92vw);
+      height: min(710px, 92vh);
+      border-radius: 42px;
+      background: rgba(255,255,255,.55);
+      padding: 14px;
+      box-shadow:
+    0 18px 50px rgba(0,0,0,.16),
+    0 0 0 8px rgba(245,140,180,.18);
+      position: relative;
+    }
+
+    .phone{
+      width:100%;
+      height:100%;
+      border-radius: 34px;
+      background: #fff;
+      border: 3px solid rgba(255,255,255,.85);
+      overflow:hidden;
+      position:relative;
+      box-shadow: inset 0 0 0 2px rgba(245,140,180,.10);
+    }
+
+.earpiece{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+
+  /* turun dikit + aman untuk iPhone notch */
+  top: calc(10px + env(safe-area-inset-top));
+
+  width: 96px;
+  height: 22px;
+  border-radius: 999px;
+
+  /* bikin lebih “kelihatan” di iPhone */
+  background: rgba(255,255,255,.70);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.08),
+    0 6px 14px rgba(0,0,0,.08);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  z-index: 999;          /* pastiin paling atas */
+  pointer-events:none;
+}
+
+.earpiece:before{
+  content:"";
+  width:42px;
+  height:6px;
+  border-radius:999px;
+
+  /* garis speaker lebih kontras */
+  background: rgba(0,0,0,.20);
+  opacity: 1;
+}
+
+    /* ======= PAGES ======= */
+    .page{
+      position:absolute;
+      inset:0;
+      display:none;
+      overflow:hidden;
+      pointer-events:none;
+    }
+    .page.active{
+      display:block;
+      pointer-events:auto;
+    }
+
+    /* ==================== PAGE 1: PASSWORD ==================== */
+    .p1{
+      background:
+        url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='720' height='1400' viewBox='0 0 720 1400'>\
+<defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'>\
+<stop offset='0' stop-color='%23ffd7e7'/><stop offset='1' stop-color='%23ffcade'/>\
+</linearGradient></defs>\
+<rect width='720' height='1400' fill='url(%23g)'/>\
+<path d='M360 140 C330 80 250 70 220 120 C190 170 220 230 360 310 C500 230 530 170 500 120 C470 70 390 80 360 140Z' fill='%23f08ab6' opacity='0.95'/>\
+<g opacity='0.85'>\
+<g fill='%23ffffff'>\
+<rect x='120' y='160' width='40' height='40'/><rect x='160' y='160' width='40' height='40'/>\
+<rect x='200' y='160' width='40' height='40'/><rect x='240' y='200' width='40' height='40'/>\
+<rect x='280' y='200' width='40' height='40'/><rect x='320' y='200' width='40' height='40'/>\
+<rect x='360' y='160' width='40' height='40'/><rect x='400' y='160' width='40' height='40'/>\
+<rect x='440' y='160' width='40' height='40'/>\
+</g>\
+<g fill='%23e6e0f3'>\
+<rect x='80' y='520' width='40' height='40'/><rect x='120' y='520' width='40' height='40'/>\
+<rect x='160' y='520' width='40' height='40'/><rect x='200' y='560' width='40' height='40'/>\
+<rect x='240' y='560' width='40' height='40'/><rect x='280' y='560' width='40' height='40'/>\
+<rect x='320' y='520' width='40' height='40'/><rect x='360' y='520' width='40' height='40'/>\
+<rect x='400' y='520' width='40' height='40'/>\
+</g>\
+<g fill='%23ffffff'>\
+<rect x='40' y='860' width='40' height='40'/><rect x='80' y='860' width='40' height='40'/>\
+<rect x='120' y='860' width='40' height='40'/><rect x='160' y='900' width='40' height='40'/>\
+<rect x='200' y='900' width='40' height='40'/><rect x='240' y='900' width='40' height='40'/>\
+<rect x='280' y='860' width='40' height='40'/><rect x='320' y='860' width='40' height='40'/>\
+<rect x='360' y='860' width='40' height='40'/>\
+</g></g>\
+<g opacity='0.40' fill='%23ffffff'>\
+<rect x='90' y='320' width='10' height='10'/><rect x='620' y='360' width='10' height='10'/>\
+<rect x='560' y='780' width='10' height='10'/><rect x='140' y='740' width='10' height='10'/>\
+<rect x='620' y='1040' width='10' height='10'/><rect x='100' y='1080' width='10' height='10'/>\
+</g>\
+</svg>") center/cover no-repeat;
+      position:relative;
+    }
+
+    .p1 .ui{
+      position:relative;
+      z-index:2;
+      height:100%;
+      padding: 92px 18px 18px;
+      display:grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 12px;
+    }
+    .p1 .header{ text-align:center; }
+    .p1 .lock{
+      width:28px;height:28px;
+      opacity:.28;
+      display:block;
+      margin:0 auto 8px;
+    }
+    .p1 .title{
+      font-size:24px;
+      font-weight:700;
+      color:#222;
+      text-shadow:0 1px 0 rgba(255,255,255,.35);
+    }
+    .p1 .hint{
+      margin-top:6px;
+      font-size:12.5px;
+      font-weight:500;
+      color:rgba(30,30,30,.55);
+    }
+    .p1 .pass-row{
+      margin-top:12px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+    }
+    .p1 .slot{
+      width:26px;height:34px;
+      border-radius:10px;
+      background:rgba(255,255,255,.38);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      font-weight:600;
+      color:rgba(30,30,30,.78);
+      user-select:none;
+    }
+    .p1 .slot.empty{color: rgba(30,30,30,.25)}
+    .p1 .keypad{
+      width: 84%;
+      margin: 0 auto;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px 14px;
+      align-content:center;
+    }
+    .p1 .key{
+      height:60px;
+      border-radius:14px;
+      border:3px solid rgba(255,255,255,.70);
+      background: linear-gradient(#f7b2cc, #f19fc0);
+        box-shadow:
+    0 10px 0 rgba(0,0,0,.10),
+    0 18px 30px rgba(0,0,0,.10),
+    inset 0 2px 0 rgba(255,255,255,.35);
+      color: rgba(255,255,255,.95);
+      font-size:17px;
+      font-weight:700;
+      letter-spacing:.5px;
+      cursor:pointer;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+        -webkit-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
+  transform: translateZ(0);
+    }
+  
+    .p1 .key:active{
+  transform: translateY(2px) translateZ(0);
+  box-shadow:
+    0 6px 0 rgba(0,0,0,.10),
+    0 12px 20px rgba(0,0,0,.10),
+    inset 0 2px 0 rgba(255,255,255,.28);
+}
+    .p1 .key.zero{grid-column:2/3}
+    .p1 .enter{
+      width: 86%;
+      height: 54px;
+      border-radius: 22px;
+      border: 2px solid rgba(255,255,255,.75);
+      background: rgba(245,150,188,.88);
+      box-shadow: 0 10px 20px rgba(0,0,0,.10);
+      color:#fff;
+      font-weight:800;
+      letter-spacing:.3px;
+      cursor:pointer;
+      margin: 0 auto;
+      display:block;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .p1 .error{
+      margin-top:10px;
+      text-align:center;
+      font-size:12px;
+      color:#b71c1c;
+      font-weight:700;
+      min-height: 14px;
+    }
+
+    /* balloons */
+    .balloons{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      overflow:hidden;
+    }
+    .balloon{
+      position:absolute;
+      bottom:-120px;
+      animation: rise linear infinite;
+      filter: drop-shadow(0 10px 10px rgba(0,0,0,.08));
+      opacity:.85;
+    }
+    .balloon.small{width:34px}
+    .balloon.medium{width:46px}
+    .balloon.large{width:62px}
+    @keyframes rise{
+      from{ transform: translateY(0) translateX(0); }
+      to  { transform: translateY(-980px) translateX(28px); }
+    }
+
+    /* ==================== PAGE 2 (INSPO) ==================== */
+    #p2{
+      background: #fff; /* full putih */
+    }
+    #p2 .panel{
+      position:absolute;
+      inset:0;               /* nempel screen */
+      padding: 22px 20px 18px;
+      background:#fff;
+      border-radius: 34px;
+      overflow:hidden;
+    }
+
+    /* status */
+    #p2 .statusbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      margin-top: 6px;
+    }
+    #p2 .timebig{
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      line-height: 1;
+      color: rgba(245,140,180,.65);
+    }
+    #p2 .date{
+      margin-top: 6px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: rgba(0,0,0,.75);
+    }
+    #p2 .battery{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(0,0,0,.70);
+    }
+    #p2 .bat{
+      width:25px;height:15px;
+      border-radius:6px;
+      border:2px solid rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    #p2 .bat:after{
+      content:"";
+      position:absolute;
+      right:-6px; top:4px;
+      width:6px; height:10px;
+      border-radius:2px;
+      background: rgba(0,0,0,.35);
+    }
+    #p2 .fill{height:100%;width:100%;background:#52c41a;}
+    #p2 .pct{ white-space:nowrap; }
+
+    /* quick toggles */
+    #p2 .quick{
+      margin-top: 18px;
+      background: rgba(245,140,180,.18);
+      border-radius: 26px;
+      padding: 10px 12px;
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    #p2 .qdot{
+      width:44px;height:44px;
+      border-radius:999px;
+      background: rgba(245,140,180,.30);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.78);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    #p2 .qdot svg{ width:26px; height:26px; display:block; }
+
+    /* brightness */
+    #p2 .sliderbar{
+      margin-top: 16px;
+      height: 48px;
+      background: rgba(220,216,238,.55);
+      border-radius: 18px;
+      display:flex;
+      align-items:center;
+      padding: 0 12px;
+      gap: 12px;
+      overflow:hidden;
+    }
+    #p2 .sun{
+      width: 22px;
+      height: 22px;
+      opacity:.65;
+      flex: 0 0 auto;
+    }
+    #p2 .bar{
+      flex:1;
+      height: 32px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.35);
+      position: relative;
+      overflow:hidden;
+    }
+    #p2 .bar::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:45%;
+      background: rgba(220,216,238,.55);
+    }
+    #p2 .bar::after{
+      content:"";
+      position:absolute;
+      left:45%; top:0; bottom:0; right:0;
+      background: rgba(255,255,255,.20);
+    }
+
+/* ==================== SPOTIFY (FIX NO... / CLICK / STABLE) ==================== */
+#p2 .card.spotify{
+  margin-top: 16px;
+  background: rgba(245,140,180,.28);
+  border-radius: 20px;
+  padding: 10px 10px 12px;
+  box-shadow: 0 12px 18px rgba(0,0,0,.07);
+}
+
+#p2 .spotify-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 2px 6px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(0,0,0,.70);
+}
+
+#p2 .spotify-left{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width: 0;
+}
+
+#p2 .spotify-logo{ width:17px; height:17px; opacity:.92; flex:0 0 auto; }
+#p2 .chev{ width:18px; height:18px; opacity:.65; flex:0 0 auto; }
+
+/* Layout utama: album | text (flexible) | controls (auto) */
+#p2 .spotify-body{
+  display:grid;
+  grid-template-columns: 56px minmax(0,1fr) 86px;
+  align-items:center;
+  gap: 10px;
+}
+
+/* album */
+#p2 .album{
+  width:56px;
+  height:56px;
+  border-radius:14px;
+  overflow:hidden;
+  background: rgba(255,255,255,.60);
+  flex:0 0 auto;
+}
+#p2 .album img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* text area (WAJIB min-width:0 biar grid bisa ngitung bener) */
+#p2 .sp-mid{
+  min-width: 0;
+}
+
+/* Title: harusnya "Nothing" gak mungkin kepotong lagi */
+#p2 .t1{
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(0,0,0,.75);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip; /* bukan ellipsis */
+}
+
+/* Singer: 1 baris, no ellipsis */
+#p2 .t2{
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(0,0,0,.55);
+  opacity: .85;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip; /* bukan ellipsis */
+}
+
+/* controls */
+#p2 .sp-ctl{
+  width:86px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
+}
+
+#p2 .sp-ctl button{
+  width:26px;
+  height:26px;
+  padding:0;
+}
+
+/* REMOVE kotak default button (Spotify controls) */
+#p2 .sp-ctl button{
+  background: transparent !important;
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#p2 .sp-ctl button:focus,
+#p2 .sp-ctl button:active{
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#p2 .sp-ctl svg{
+  width:16px;
+  height:16px;
+}
+
+    /* message card */
+    #p2 .msgrow{
+      margin-top: 16px;
+      background: rgba(220,216,238,.72);
+      border-radius: 22px;
+      padding: 12px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      box-shadow: 0 12px 18px rgba(0,0,0,.07);
+      cursor:pointer;
+      position: relative;
+      z-index: 2;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .avatar{
+      width:42px;height:42px;border-radius:999px;
+      background: rgba(255,255,255,.75);
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover}
+    .msgtext{ min-width:0; }
+    .msgtext .name{font-weight:800;font-size:13px;color:rgba(0,0,0,.78); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .msgtext .sub{font-weight:600;font-size:12px;color:rgba(0,0,0,.55); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .mins{margin-left:auto;font-weight:700;font-size:12px;color:rgba(0,0,0,.45); white-space:nowrap;}
+
+    /* ==================== PAGE 3/4 BG ==================== */
+/* ==================== PAGE 3 (MATCH INSPO) ==================== */
+#p3{
+  background:#fff;            /* luar screen putih (hilangin pink gelap) */
+  padding: 22px 20px 18px;    /* sama vibe page 2 */
+}
+
+/* statusbar: jam warna + date bawah, battery kanan atas kayak page 2 */
+#p3 .statusbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-top: 6px;
+}
+
+#p3 .timebig{
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  line-height: 1;
+  color: rgba(245,140,180,.75); /* jam berwarna */
+}
+
+#p3 .date{
+  margin-top: 6px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(0,0,0,.75);
+}
+
+/* battery persis page 2 */
+#p3 .battery{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(0,0,0,.70);
+}
+#p3 .bat{
+  width:25px;height:15px;
+  border-radius:6px;
+  border:2px solid rgba(0,0,0,.35);
+  position:relative;
+  overflow:hidden;
+  flex:0 0 auto;
+}
+#p3 .bat:after{
+  content:"";
+  position:absolute;
+  right:-6px; top:4px;
+  width:6px; height:10px;
+  border-radius:2px;
+  background: rgba(0,0,0,.35);
+}
+#p3 .fill{height:100%;width:100%;background:#52c41a;}
+#p3 .pct{ white-space:nowrap; }
+
+/* panel ungu dibuat lebih “panjang” */
+#p3 .chatwrap{
+  margin-top: 18px;
+  border-radius: 26px;
+  background: rgba(220,216,238,.90);
+  padding: 14px;
+
+  /* bikin panel ungu lebih lebar */
+  width: calc(100% + 14px);
+  margin-left: -7px;
+
+  /* bikin panel ungu lebih panjang */
+  height: calc(100% - 155px);
+
+  box-shadow: 0 10px 18px rgba(0,0,0,.08);
+  overflow:auto;
+}
+
+/* call button – clean, no box */
+.call-btn{
+  margin-left:auto;        /* DORONG KE KANAN */
+  background: transparent; /* HILANGIN KOTAK */
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:.7;
+}
+
+.call-btn svg{
+  width:22px;
+  height:22px;
+}
+
+/* header chat: avatar + nama + online + icon call non-emoji */
+#p3 .topmsg{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding: 8px 6px 10px;
+}
+
+#p3 .topmsg .name{
+  font-weight:900;
+  font-size:15px;
+  color:rgba(0,0,0,.78);
+}
+
+#p3 .topmsg .online{
+  font-weight:700;
+  font-size:10px;
+  color:rgba(0,0,0,.50);
+}
+
+/* bubble: samain semua warna (hapus soft beda warna) */
+#p3 .bubble{
+  width:max-content;
+  max-width: 92%;
+  background: rgba(255, 214, 230, .80);  /* peach/pink */
+  border-radius: 18px;
+  padding: 12px 12px;
+  margin: 10px 6px;
+  font-size: 14px;
+  line-height: 1.35;
+  color: rgba(0,0,0,.72);
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
+}
+
+/* Sticker size fix */
+.bigsticker{
+  display: block;
+  width: 140px;        /* ukuran ideal */
+  max-width: 60%;      /* aman di HP kecil */
+  height: auto;
+  margin: 16px auto 4px; /* tengah + jarak atas */
+  opacity: .95;
+}
+
+/* CTA bawah tetap */
+#p3 .cta{
+  text-align:center;
+  font-weight:800;
+  color: rgba(0,0,0,.55);
+  margin-top: 10px;
+  user-select:none;
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+    /* page4 */
+    /* ===== PAGE 4 STATUSBAR (SAMAIN PAGE 2) ===== */
+#p4 .statusbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-top: 6px;
+}
+#p4 .timebig{
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  line-height: 1;
+  color: rgba(245,140,180,.65);
+}
+#p4 .date{
+  margin-top: 6px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(0,0,0,.75);
+}
+#p4 .battery{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(0,0,0,.70);
+}
+#p4 .bat{
+  width:25px;height:15px;
+  border-radius:6px;
+  border:2px solid rgba(0,0,0,.35);
+  position:relative;
+  overflow:hidden;
+  flex:0 0 auto;
+}
+#p4 .bat:after{
+  content:"";
+  position:absolute;
+  right:-6px; top:4px;
+  width:6px; height:10px;
+  border-radius:2px;
+  background: rgba(0,0,0,.35);
+}
+#p4 .fill{height:100%;width:100%;background:#52c41a;}
+#p4 .pct{ white-space:nowrap; }
+
+/* ===== FIX PAGE 4: NOTE GAK KETIBAN CONTROLS ===== */
+
+#p4 .photowrap{
+  margin-top: 18px;
+  border-radius: 26px;
+  background: rgba(255,255,255,.65);
+  padding: 12px;
+  box-shadow: 0 10px 18px rgba(0,0,0,.08);
+
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* track khusus page 4 (jangan ikut global .track) */
+#p4 .track{
+  flex:1;
+  display:flex;
+  transition: transform .35s ease;
+  min-height: 0;
+}
+
+/* slide: susun foto + note ke bawah */
+#p4 .slide{
+  min-width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap: 10px;
+  padding: 6px;
+}
+
+#p4 .slide img{
+  width: 100%;
+  height: clamp(240px, 42vh, 360px);
+  border-radius: 20px;
+  object-fit: cover;
+  background: rgba(255,255,255,.6);
+}
+
+/* note selalu di bawah foto */
+#p4 .note{
+  font-weight:800;
+  color: rgba(0,0,0,.62);
+  font-size: 14px;
+  text-align:center;
+  padding: 0 10px;
+  margin: 0;               /* reset margin */
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+/* controls fix: selalu paling bawah dan gak niban */
+#p4 .controls{
+  display:flex;
+  justify-content:space-between;
+  gap: 10px;
+  margin-top: 6px;         /* prev/next naik dikit */
+  padding-bottom: 2px;     /* biar lega */
+  flex: 0 0 auto;
+}
+
+#p4 .btn{
+  flex:1;
+  height: 44px;
+  border-radius: 18px;
+  border: 2px solid rgba(255,255,255,.75);
+  background: rgba(245,140,180,.78);
+  color:#fff;
+  font-weight:900;
+  letter-spacing:.3px;
+  box-shadow: 0 10px 18px rgba(0,0,0,.10);
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+#p4 .btn:active{ transform: translateY(2px); }
+
+#p4{
+  background:#fff;
+}
+#p4 .panel{
+  position:absolute;
+  inset:0;
+  padding: 22px 20px 18px;
+  background:#fff;
+  border-radius: 34px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+#p4 .cta{
+  margin: 12px auto 0;     /* jarak dari photowrap */
+  width: max-content;
+  padding: 6px 14px;
+  border-radius: 16px;
+  background: rgba(245,140,180,.18);
+  box-shadow: 0 10px 18px rgba(0,0,0,.06);
+  font-weight: 900;
+  letter-spacing: .3px;
+  color: rgba(0,0,0,.55);
+
+  position: static;        /* penting: matiin top:50px */
+}
+#p4 .cta:active{
+  transform: translateY(1px);
+}
+
+    .btn{
+      flex:1;
+      height: 44px;
+      border-radius: 18px;
+      border: 2px solid rgba(255,255,255,.75);
+      background: rgba(245,140,180,.78);
+      color:#fff;
+      font-weight:900;
+      letter-spacing:.3px;
+      box-shadow: 0 10px 18px rgba(0,0,0,.10);
+      cursor:pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:active{transform: translateY(2px)}
+  
+  @supports (-webkit-touch-callout: none){
+  .p1 .key{
+    -webkit-appearance: none;
+    appearance: none;
+    touch-action: manipulation;
+    transform: translateZ(0);
+
+    box-shadow:
+      0 10px 0 rgba(0,0,0,.10),
+      0 18px 30px rgba(0,0,0,.10),
+      inset 0 2px 0 rgba(255,255,255,.35);
+  }
+
+  .p1 .key:active{
+    transform: translateY(2px) translateZ(0);
+    box-shadow:
+      0 6px 0 rgba(0,0,0,.10),
+      0 12px 20px rgba(0,0,0,.10),
+      inset 0 2px 0 rgba(255,255,255,.28);
+  }
+}
+  </style>
+</head>
+
+<body>
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="earpiece"></div>
+
+      <!-- PAGE 1 -->
+      <section class="page p1 active" id="p1">
+        <div class="balloons" id="balloons"></div>
+
+        <div class="ui">
+          <div class="header">
+            <svg class="lock" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="rgba(0,0,0,.35)" d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5Zm3 8H9V7a3 3 0 0 1 6 0v3Z"/>
+            </svg>
+
+            <div class="title">Enter the password</div>
+            <div class="hint">The password is our anniversary</div>
+            <div class="pass-row" id="passRow"></div>
+
+            <div style="margin-top:10px;font-size:12px;font-weight:700;color:rgba(0,0,0,.38);">
+              tap a digit slot to delete
+            </div>
+          </div>
+
+          <div class="keypad">
+            <button class="key" onclick="press(1)">1</button>
+            <button class="key" onclick="press(2)">2</button>
+            <button class="key" onclick="press(3)">3</button>
+            <button class="key" onclick="press(4)">4</button>
+            <button class="key" onclick="press(5)">5</button>
+            <button class="key" onclick="press(6)">6</button>
+            <button class="key" onclick="press(7)">7</button>
+            <button class="key" onclick="press(8)">8</button>
+            <button class="key" onclick="press(9)">9</button>
+            <button class="key zero" onclick="press(0)">0</button>
+          </div>
+
+          <div>
+            <button class="enter" onclick="submitPass()">Enter</button>
+            <div class="error" id="err"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE 2 -->
+      <section class="page" id="p2">
+        <div class="panel">
+
+          <div class="statusbar">
+            <div>
+              <div class="timebig">00:00</div>
+              <div class="date">mon, sept 2026</div>
+            </div>
+
+            <div class="battery">
+              <div class="bat"><div class="fill"></div></div>
+              <div class="pct">100%</div>
+            </div>
+          </div>
+
+          <div class="quick">
+            <!-- WiFi (fix peyok) -->
+            <div class="qdot" title="Wi-Fi">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="white" d="M12 18c.83 0 1.5.67 1.5 1.5S12.83 21 12 21s-1.5-.67-1.5-1.5S11.17 18 12 18zm0-4c2.21 0 4.21.9 5.66 2.34l-1.41 1.41A6.98 6.98 0 0012 16c-1.66 0-3.16.67-4.24 1.76l-1.41-1.41A8.97 8.97 0 0112 14zm0-4c3.31 0 6.31 1.35 8.49 3.51l-1.41 1.41A10.97 10.97 0 0012 12c-2.76 0-5.27 1.12-7.07 2.93L3.51 13.5A12.93 12.93 0 0112 10z"/>
+              </svg>
+            </div>
+
+            <div class="qdot" title="Location">
+              <svg viewBox="0 0 24 24"><path fill="white" d="M12 2a7 7 0 00-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 00-7-7Zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5Z"/></svg>
+            </div>
+
+            <div class="qdot" title="Airplane">
+              <svg viewBox="0 0 24 24"><path fill="white" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 00-3 0V9L2 14v2l8-2.5V19l-2 1.5V22l3-1 3 1v-1.5L13 19v-5.5L21 16Z"/></svg>
+            </div>
+
+            <div class="qdot" title="Lock">
+              <svg viewBox="0 0 24 24"><path fill="white" d="M17 10h-1V8a4 4 0 00-8 0v2H7a2 2 0 00-2 2v8a2 2 0 002 2h10a2 2 0 002-2v-8a2 2 0 00-2-2Zm-3 0h-4V8a2 2 0 014 0v2Z"/></svg>
+            </div>
+
+            <!-- Globe with “bolong” lengkap -->
+            <div class="qdot" title="Internet">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="white" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.6 9h-3.1c-.2-2.1-.7-4-1.3-5.1A8 8 0 0 1 19.6 11ZM12 4c.8 1 1.9 3.2 2.4 7H9.6c.5-3.8 1.6-6 2.4-7ZM8.8 5.9c-.6 1.4-1.1 3.2-1.3 5.1H4.4a8 8 0 0 1 4.4-5.1ZM4.4 13h3.1c.2 1.9.7 3.7 1.3 5.1A8 8 0 0 1 4.4 13ZM12 20c-.8-1-1.9-3.2-2.4-7h4.8c-.5 3.8-1.6 6-2.4 7Zm3.2-1.9c.6-1.4 1.1-3.2 1.3-5.1h3.1a8 8 0 0 1-4.4 5.1Z"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="sliderbar">
+            <svg class="sun" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="rgba(0,0,0,.55)" d="M12 18a6 6 0 110-12 6 6 0 010 12Zm0-16h1v3h-1V2Zm0 19h1v-3h-1v3ZM2 11h3v1H2v-1Zm19 0h-3v1h3v-1ZM4.2 5.6l2.1 2.1.7-.7-2.1-2.1-.7.7Zm15 15-2.1-2.1-.7.7 2.1 2.1.7-.7ZM18.4 4.9l-2.1 2.1.7.7 2.1-2.1-.7-.7ZM5.6 19.8l2.1-2.1-.7-.7-2.1 2.1.7.7Z"/>
+            </svg>
+            <div class="bar"></div>
+          </div>
+
+<!-- Spotify -->
+    <div class="card spotify">
+      <div class="spotify-head">
+        <div class="spotify-left">
+          <svg class="spotify-logo" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="rgba(0,0,0,.78)" d="M12 2a10 10 0 100 20 10 10 0 000-20Zm4.6 14.4a.8.8 0 01-1.1.3c-3-1.8-6.7-2.2-11-.9a.8.8 0 11-.5-1.5c4.7-1.4 8.8-1 12.1 1a.8.8 0 01.5 1.1Zm1.1-2.6a1 1 0 01-1.4.3c-3.4-2-8.6-2.6-12.7-1.3a1 1 0 01-.6-1.9c4.7-1.5 10.4-.9 14.3 1.5a1 1 0 01.4 1.4Zm.1-2.8C14 8.8 6.8 8.6 3.8 9.6a1.2 1.2 0 01-.7-2.3c3.6-1.1 11.5-.9 16 1.7a1.2 1.2 0 01-1.3 2Z"/>
+          </svg>
+          <span>Spotify</span>
+        </div>
+
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="rgba(0,0,0,.55)" d="M7 10l5 5 5-5z"/>
+        </svg>
+      </div>
+
+      <div class="spotify-body">
+        <div class="album">
+          <img src="album.jpg" alt="Album cover">
+        </div>
+
+        <div class="sp-mid">
+          <div class="t1">tergila gila</div>
+          <div class="t2">Tulus</div>
+        </div>
+
+        <div class="sp-ctl">
+          <button type="button" onclick="prevTrack()" aria-label="Previous">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="rgba(0,0,0,.78)" d="M6 6h2v12H6V6Zm3.5 6l10-6v12l-10-6Z"/>
+            </svg>
+          </button>
+
+          <button type="button" onclick="toggleMusic()" aria-label="Play/Pause">
+            <svg id="playIcon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="rgba(0,0,0,.78)" d="M8 5v14l11-7L8 5Z"/>
+            </svg>
+            <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none" aria-hidden="true">
+              <path fill="rgba(0,0,0,.78)" d="M6 5h4v14H6V5Zm8 0h4v14h-4V5Z"/>
+            </svg>
+          </button>
+
+          <button type="button" onclick="nextTrack()" aria-label="Next">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="rgba(0,0,0,.78)" d="M16 6h2v12h-2V6ZM6 18V6l10 6-10 6Z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+<!-- message -->
+    <div class="msgrow tap" onclick="go(3)">
+      <div class="avatar"><img src="avatar.jpg" alt=""></div>
+      <div class="msgtext">
+        <div class="name">Mark 💕</div>
+        <div class="sub">Sent you a message</div>
+      </div>
+      <div class="mins">2m</div>
+    </div>
+
+  </div> <!-- ✅ ini nutup .panel -->
+</section> <!-- ✅ ini nutup page p2 -->
+
+      <!-- PAGE 3 -->
+      <section class="page" id="p3">
+        <div class="statusbar">
+  <div>
+    <div class="timebig">00:00</div>
+    <div class="date">mon, sept 2026</div>
+  </div>
+
+  <div class="battery">
+    <div class="bat"><div class="fill"></div></div>
+    <div class="pct">100%</div>
+  </div>
+</div>
+
+        <div class="chatwrap">
+          <div class="topmsg">
+            <div class="avatar"><img src="avatar.jpg" alt=""></div>
+            <div>
+              <div class="name">Mark 💕</div>
+              <div class="online">Online</div>
+            </div>
+            <button class="call-btn" aria-label="Call">
+  <svg viewBox="0 0 24 24">
+    <path d="M6.6 10.8c1.5 3 3.9 5.4 6.9 6.9l2.3-2.3c.3-.3.7-.4 1.1-.3
+    1.2.4 2.5.6 3.9.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1
+    C10.4 22 2 13.6 2 3c0-.6.4-1 1-1h4.5c.6 0 1 .4 1 1
+    0 1.4.2 2.7.6 3.9.1.4 0 .8-.3 1.1l-2.2 2.3z"
+    fill="rgba(0,0,0,.55)"/>
+  </svg>
+</button>
+          </div>
+
+          <div class="bubble">
+            hai bb, it's our 1st mensiversary, ngl, i never thought we’d actually make it this far. thank u for always forgiving me for all the shit i’ve done and for still staying by my side. i love u sm, abang. i hope this month and all the months ahead bring us nothing but more happiness, love, and affection. hopefully we’ll keep growing together and making more good memories. love u always, abang. 🤍
+          </div>
+          <div class="bubble">
+            also i just wanted to make sure you knew that i’m sooo beyond thankful to have you in my life
+          <div class="bubble">
+            I love you more than my mind can define. I love listening to you. I love learning about you. I love learning from you. I love thinking about all the wonderful things I love about you. I love how strong you are. I love how much you love me. I love that such love exists. I love loving you and maybe making your day better. I love that I'm yours. Beyond that, I really don’t care about much anymore.. Just u
+          </div>
+
+<img class="bigsticker" src="sticker.jpg" alt="sticker">
+        </div>
+
+        <div class="cta tap" onclick="go(4)">go to photo</div>
+      </section>
+
+      <!-- PAGE 4 -->
+      <section class="page" id="p4">
+  <div class="panel">
+<div class="statusbar">
+  <div>
+    <div class="timebig">00:00</div>
+    <div class="date">mon, sept 2026</div>
+  </div>
+
+  <div class="battery">
+    <div class="bat"><div class="fill"></div></div>
+    <div class="pct">100%</div>
+  </div>
+</div>
+
+        <div class="photowrap">
+          <div class="track" id="track">
+            <div class="slide">
+              <img src="photo1.jpg" alt="">
+              <div class="note" id="note1">Note for photo 1</div>
+            </div>
+            <div class="slide">
+              <img src="photo2.jpg" alt="">
+              <div class="note" id="note2">Note for photo 2</div>
+            </div>
+            <div class="slide">
+              <img src="photo3.jpg" alt="">
+              <div class="note" id="note3">Note for photo 3</div>
+            </div>
+            <div class="slide">
+              <img src="photo4.jpg" alt="">
+              <div class="note" id="note4">Note for photo 4</div>
+            </div>
+            <div class="slide">
+              <img src="photo5.jpg" alt="">
+              <div class="note" id="note5">Note for photo 5</div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button class="btn" onclick="prev()">Prev</button>
+            <button class="btn" onclick="next()">Next</button>
+          </div>
+        </div>
+
+<div class="cta tap" onclick="go(2)">back</div>
+      </div>   <!-- ✅ tutup .panel -->
+</section>     <!-- ✅ tutup page p4 -->
+
+      <audio id="audio" src="tergilagila.mp3" preload="auto"></audio>
+    </div>
+  </div>
+
+<script>
+  /* ===== PASS UI ===== */
+  const PASS = "140926";
+  const PASS_LEN = 6;
+  const EXPECTED = PASS;
+
+  let typed = "";
+
+  const passRow = document.getElementById("passRow");
+  const err = document.getElementById("err");
+
+  function renderSlots(){
+    passRow.innerHTML = "";
+    for(let i=0;i<PASS_LEN;i++){
+      const s = document.createElement("div");
+      s.className = "slot" + (typed[i] ? "" : " empty");
+      s.textContent = typed[i] ? typed[i] : "•";
+      s.title = "tap to delete";
+      s.addEventListener("click", backspace);
+      passRow.appendChild(s);
+    }
+  }
+
+  function press(n){
+    if(typed.length >= PASS_LEN) return;
+    typed += String(n);
+    err.textContent = "";
+    renderSlots();
+  }
+
+  function backspace(){
+    typed = typed.slice(0,-1);
+    renderSlots();
+  }
+
+  function submitPass(){
+    if(typed === EXPECTED){
+      go(2);
+      typed = "";
+      renderSlots();
+      err.textContent = "";
+    }else{
+      err.textContent = "Wrong password";
+    }
+  }
+
+  renderSlots();
+
+  /* ===== BALLOONS ===== */
+  const balloons = document.getElementById("balloons");
+
+  function balloonSVG(colorA, colorB){
+    return `
+      <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hb" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="${colorA}"/>
+            <stop offset="1" stop-color="${colorB}"/>
+          </linearGradient>
+          <radialGradient id="hl" cx="35%" cy="35%" r="45%">
+            <stop offset="0" stop-color="rgba(255,255,255,.75)"/>
+            <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+          </radialGradient>
+        </defs>
+
+        <path d="M60 70
+                 C52 44 22 40 14 56
+                 C6 72 18 92 42 110
+                 C52 118 56 126 60 132
+                 C64 126 68 118 78 110
+                 C102 92 114 72 106 56
+                 C98 40 68 44 60 70Z"
+              fill="url(#hb)" opacity="0.98"/>
+
+        <ellipse cx="44" cy="70" rx="18" ry="26" fill="url(#hl)" opacity="0.85"/>
+
+        <path d="M56 134 L64 134 L60 145 Z" fill="rgba(210,60,120,.55)"/>
+        <path d="M60 145 C58 150 62 152 60 157" stroke="rgba(210,60,120,.55)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <path d="M60 157 C58 170 68 178 60 192"
+              stroke="rgba(120,120,120,.35)"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"/>
+      </svg>
+    `;
+  }
+
+  function spawnBalloon(){
+    const b = document.createElement("div");
+    const sizes = ["small","medium","large"];
+    const size = sizes[Math.floor(Math.random()*sizes.length)];
+    b.className = `balloon ${size}`;
+
+    const x = Math.random()*85 + 5;
+    b.style.left = x + "%";
+
+    const dur = 12 + Math.random()*10;
+    b.style.animationDuration = dur + "s";
+
+    const palette = [
+      ["#ff8fbe","#f06aa7"],
+      ["#ffa7cd","#f27fb2"],
+      ["#ff79b3","#e85e9f"]
+    ];
+    const [c1,c2] = palette[Math.floor(Math.random()*palette.length)];
+    b.innerHTML = balloonSVG(c1,c2);
+
+    balloons.appendChild(b);
+    setTimeout(()=> b.remove(), (dur+1)*1000);
+  }
+
+  let balloonTimer = null;
+  function startBalloons(){
+    if(balloonTimer) return;
+    balloonTimer = setInterval(()=>{
+      if(document.getElementById("p1").classList.contains("active")){
+        spawnBalloon();
+      }
+    }, 950);
+  }
+  function stopBalloons(){
+    if(balloonTimer){
+      clearInterval(balloonTimer);
+      balloonTimer = null;
+    }
+  }
+  startBalloons();
+
+  /* ===== NAV ===== */
+  function go(page){
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    document.getElementById("p"+page).classList.add("active");
+    if(page === 1) startBalloons(); else stopBalloons();
+  }
+
+  /* ===== MUSIC (FIX PLAY/PAUSE + REPLAY) ===== */
+  const audio = document.getElementById("audio");
+  const playIcon = document.getElementById("playIcon");
+  const pauseIcon = document.getElementById("pauseIcon");
+
+  function setIcons(isPlaying){
+    playIcon.style.display  = isPlaying ? "none" : "block";
+    pauseIcon.style.display = isPlaying ? "block" : "none";
+  }
+
+  function toggleMusic(){
+    // kalau habis, mulai dari awal
+    if (audio.ended || (audio.duration && audio.currentTime >= audio.duration - 0.05)) {
+      audio.currentTime = 0;
+    }
+
+    if (audio.paused) {
+      audio.play().then(()=> setIcons(true)).catch(()=>{});
+    } else {
+      audio.pause();
+      setIcons(false);
+    }
+  }
+
+  audio.addEventListener("ended", ()=>{
+    audio.currentTime = 0;
+    setIcons(false);
+  });
+  audio.addEventListener("play",  ()=> setIcons(true));
+  audio.addEventListener("pause", ()=> setIcons(false));
+
+  function nextTrack(){}
+  function prevTrack(){}
+
+  /* ===== PHOTO SLIDER ===== */
+  const track = document.getElementById("track");
+  let idx = 0;
+
+  function updateTrack(){
+    track.style.transform = `translateX(-${idx*100}%)`;
+  }
+  function next(){
+    idx = Math.min(idx+1, 4);
+    updateTrack();
+  }
+  function prev(){
+    idx = Math.max(idx-1, 0);
+    updateTrack();
+  }
+
+  document.getElementById("note1").textContent =
+  "abang, u’re actually terrible at handling a guitar✌️";
+
+document.getElementById("note2").textContent =
+  "ewh why u tryna look so damn handsome";
+
+document.getElementById("note3").textContent =
+  "HEY WATCH OUT, I’M GONNA BANG MY HEAD";
+
+document.getElementById("note4").textContent =
+  "wyd -_-";
+
+document.getElementById("note5").textContent =
+  "MY FAV ONE, i love when u gimme attention";
+  // iOS Safari: enable :active on touch
+document.addEventListener("touchstart", function(){}, {passive:true});
+</script>
+</body>
+</html>
